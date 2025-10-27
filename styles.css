@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.page {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.page.active {
+    display: flex;
+}
+
+#main-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.instructions {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calibration-info {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#calibration-status {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#calibrate-btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#calibrate-btn:hover {
+    transform: scale(1.05);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    grid-template-rows: repeat(2, 150px);
+    gap: 20px;
+    padding: 20px;
+}
+
+.color-square {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-square:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.color-square.gazing {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.loading-circle {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.color-square.gazing .loading-circle {
+    opacity: 1;
+    animation: spin 2s linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#color-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#back-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 2px solid white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+#back-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(4, 120px);
+        gap: 15px;
+    }
+
+    .color-square {
+        width: 120px;
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .instructions {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 100px);
+        grid-template-rows: repeat(5, 100px);
+        gap: 10px;
+    }
+
+    .color-square {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .loading-circle {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+}
