@@ -133,22 +133,27 @@ h1 {
 
 #back-btn {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    background: rgba(0, 0, 0, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
-    border: 2px solid white;
-    padding: 15px 30px;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    border: 3px solid white;
+    padding: 20px 50px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
 }
 
 #back-btn:hover {
-    background: rgba(0, 0, 0, 0.5);
-    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive design */
@@ -170,6 +175,11 @@ h1 {
 
     .instructions {
         font-size: 1rem;
+    }
+
+    #back-btn {
+        padding: 18px 40px;
+        font-size: 1.3rem;
     }
 }
 
@@ -193,5 +203,11 @@ h1 {
         width: 40px;
         height: 40px;
         border-width: 4px;
+    }
+
+    #back-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        border-width: 2px;
     }
 }
